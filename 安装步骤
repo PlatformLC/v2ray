@@ -1,0 +1,24 @@
+bash <(curl -s -L https://git.io/v2ray.sh)
+
+选websocket协议
+
+2022/1/14的版本里默认把安装bbr禁用了, 查找打开即可
+
+lsmod | grep bbr
+cat /proc/sys/net/ipv4/tcp_available_congestion_control 
+cat /proc/sys/net/ipv4/tcp_congestion_control 
+cat /proc/sys/net/core/default_qdisc 
+
+root@C20220114165217:~# lsmod | grep bbr
+tcp_bbr                20480  2
+root@C20220114165217:~# cat /proc/sys/net/ipv4/tcp_available_congestion_control 
+reno cubic bbr
+root@C20220114165217:~# cat /proc/sys/net/ipv4/tcp_congestion_control 
+bbr
+root@C20220114165217:~# cat /proc/sys/net/core/default_qdisc
+fq
+
+
+systemctl status v2ray
+
+v2ray url
